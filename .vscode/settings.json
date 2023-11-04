@@ -5,7 +5,8 @@
         "**/.*": true,
         "**/*.lock": true,
         "LICENSE": true,
-        "analysis_options.yaml": true
+        "analysis_options.yaml": true,
+        "dictionary.txt": true,
     },
     "dart.lineLength": 80,
     "[dart]": {
