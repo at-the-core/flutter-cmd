@@ -7,14 +7,14 @@ Future<void> prepareBefore(List<String> arguments) async {
   if (!_shouldPrepareBefore(arguments)) {
     return;
   }
-  await _prepare();
+  await _prepare(arguments);
 }
 
 Future<void> prepareAfter(List<String> arguments) async {
   if (!_shouldPrepareAfter(arguments)) {
     return;
   }
-  await _prepare();
+  await _prepare(arguments);
 }
 
 bool _shouldPrepareBefore(List<String> arguments) =>
@@ -28,7 +28,7 @@ const _trusted = [
   'riddance_env',
 ];
 
-Future<void> _prepare() async {
+Future<void> _prepare(List<String> arguments) async {
   final pubspecFile = File('pubspec.yaml');
   if (!pubspecFile.existsSync()) {
     return;
@@ -40,7 +40,7 @@ Future<void> _prepare() async {
   }
   for (final package in _trusted) {
     if (devDependencies.containsKey(package)) {
-      await execute('dart', ['run', '$package:prepare']);
+      await execute('dart', ['run', '$package:prepare', ...arguments]);
     }
   }
 }
