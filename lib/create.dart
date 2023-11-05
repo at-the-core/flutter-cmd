@@ -45,7 +45,10 @@ environment:
 }
 
 String _getTemplate(List<String> arguments) {
-  for (var ix = 1; ix != arguments.length - 1; ++ix) {
+  if (arguments.isEmpty) {
+    return 'app';
+  }
+  for (var ix = 1; ix < arguments.length - 1; ++ix) {
     final arg = arguments[ix];
     if (arg == '-t' || arg == '--template') {
       return arguments[ix + 1];

@@ -1,3 +1,5 @@
+codegen
+devenv
 fltr
 pubspec
 unawaited

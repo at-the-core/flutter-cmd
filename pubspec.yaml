@@ -1,9 +1,15 @@
 name: fltr
-version: 0.0.1
+version: 0.0.2
 description: An extensible wrapper for the flutter command.
 topics:
   - devenv
-  - environment
+  - cli
+  - codegen
+  - riddance
+  - build-runner
+
+executables:
+  fltr:
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

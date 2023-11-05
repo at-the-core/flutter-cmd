@@ -1,20 +1,11 @@
-import 'package:fltr/create.dart';
-import 'package:fltr/doctor.dart';
+import 'package:fltr/cmd.dart' as impl;
 import 'package:fltr/exec.dart';
-import 'package:fltr/prepare.dart';
 
-void main(List<String> arguments) async {
+Future<int> main(List<String> arguments) async {
   try {
-    doctor(arguments);
-    if (await create(arguments)) {
-      return;
-    }
-    await prepareBefore(arguments);
-
-    await execute('flutter', arguments);
-
-    await prepareAfter(arguments);
+    await impl.main(arguments);
+    return 0;
   } on NonZeroExitCode catch (e) {
-    e.exit();
+    return e.exitCode;
   }
 }
