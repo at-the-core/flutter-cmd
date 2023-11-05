@@ -28,10 +28,11 @@ environment:
       'dart',
       ['pub', 'add', 'dev:$template'],
       workingDirectory: dir.absolute.path,
+      quiet: true,
     );
     await execute(
       'dart',
-      ['run', '$template:create', ...arguments],
+      ['run', '--verbosity', 'warning', '$template:create', ...arguments],
       workingDirectory: dir.absolute.path,
     );
   } catch (e) {

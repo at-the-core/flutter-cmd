@@ -40,7 +40,10 @@ Future<void> _prepare(List<String> arguments) async {
   }
   for (final package in _trusted) {
     if (devDependencies.containsKey(package)) {
-      await execute('dart', ['run', '$package:prepare', ...arguments]);
+      await execute(
+        'dart',
+        ['--verbosity', 'warning', 'run', '$package:prepare', ...arguments],
+      );
     }
   }
 }
