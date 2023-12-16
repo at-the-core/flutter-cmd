@@ -4,6 +4,9 @@ import 'package:fltr/exec.dart';
 import 'package:path/path.dart';
 
 Future<bool> create(List<String> arguments) async {
+  if (arguments.firstOrNull != 'create') {
+    return false;
+  }
   final template = _getTemplate(arguments);
   if (['app', 'module', 'package', 'plugin', 'plugin_ffi', 'skeleton']
       .contains(template)) {
@@ -45,9 +48,6 @@ environment:
 }
 
 String _getTemplate(List<String> arguments) {
-  if (arguments.isEmpty) {
-    return 'app';
-  }
   for (var ix = 1; ix < arguments.length - 1; ++ix) {
     final arg = arguments[ix];
     if (arg == '-t' || arg == '--template') {

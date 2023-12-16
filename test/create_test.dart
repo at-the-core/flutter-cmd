@@ -12,6 +12,11 @@ void main() {
   });
 
   test('falls back to flutter', () async {
+    final created = await create(['doctor', '-v']);
+    expect(created, false);
+  });
+
+  test('falls back to official templates', () async {
     for (final args in [
       [],
       ['-t', 'app'],
